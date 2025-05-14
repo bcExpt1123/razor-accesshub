@@ -14,6 +14,7 @@ F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\rbac.csproj.CoreCompileInputs
 F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\rbac.MvcApplicationPartsAssemblyInfo.cache
 F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
 F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\scopedcss\Components\Utils\Dialog.razor.rz.scp.css
 F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\scopedcss\bundle\rbac.styles.css
 F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\scopedcss\projectbundle\rbac.bundle.scp.css
 F:\work\test\cursor-net\rbac\rbac\obj\Debug\net8.0\staticwebassets.build.json

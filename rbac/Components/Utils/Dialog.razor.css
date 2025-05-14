@@ -1,0 +1,35 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+
+.modal {
+    z-index: 1050;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-backdrop.custom {
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal.custom {
+    z-index: 1050;
+}
+
+.modal.custom .modal-dialog {
+    z-index: 1060;
+} 

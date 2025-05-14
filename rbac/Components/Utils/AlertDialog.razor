@@ -1,0 +1,80 @@
+@using Microsoft.Extensions.Logging
+
+<style>
+    .modal-backdrop.custom {
+        z-index: 1040;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .modal.custom {
+        z-index: 1050;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        outline: 0;
+    }
+
+    .modal.custom .modal-dialog {
+        z-index: 1060;
+    }
+</style>
+
+<div class="modal custom @(IsVisible ? "show d-block" : "d-none")" tabindex="-1" role="dialog">
+    <div class="modal-backdrop custom show" @onclick="OnClose"></div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+                <button type="button" class="btn-close" @onclick="OnClose"></button>
+            </div>
+            <div class="modal-body">
+                <p>@((MarkupString)Message)</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn @ButtonClass" @onclick="OnClose">@ButtonText</button>
+                @if (ShowSecondaryButton)
+                {
+                    <button type="button" class="btn btn-primary" @onclick="OnSecondaryAction">@SecondaryButtonText</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public bool IsVisible { get; set; }
+
+    [Parameter]
+    public string Title { get; set; } = "Alert";
+
+    [Parameter]
+    public string Message { get; set; } = "";
+
+    [Parameter]
+    public string ButtonText { get; set; } = "Close";
+
+    [Parameter]
+    public string ButtonClass { get; set; } = "btn-primary";
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    [Parameter]
+    public bool ShowSecondaryButton { get; set; }
+
+    [Parameter]
+    public string SecondaryButtonText { get; set; } = "Add more";
+
+    [Parameter]
+    public EventCallback OnSecondaryAction { get; set; }
+} 

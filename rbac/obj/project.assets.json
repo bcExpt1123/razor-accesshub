@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\work\\test\\cursor-net\\rbac\\rbac\\rbac.csproj",
-      "projectName": "rbac",
-      "projectPath": "F:\\work\\test\\cursor-net\\rbac\\rbac\\rbac.csproj",
+      "projectUniqueName": "F:\\work\\test\\cursor-net\\rbac\\rbac\\AccessHub.csproj",
+      "projectName": "AccessHub",
+      "projectPath": "F:\\work\\test\\cursor-net\\rbac\\rbac\\AccessHub.csproj",
       "packagesPath": "D:\\NuGet_Packages",
       "outputPath": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\",
       "projectStyle": "PackageReference",

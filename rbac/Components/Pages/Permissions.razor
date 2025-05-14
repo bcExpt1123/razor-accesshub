@@ -1,28 +1,500 @@
 @page "/permissions"
+@rendermode InteractiveServer
+@using AccessHub.Components.Utils
+@using Microsoft.Extensions.Logging
+@using Microsoft.JSInterop
+@using AccessHub.Services
+@using AccessHub.Models
+@using AccessHub.Utils
+@using System.Globalization
+@inject ILogger<Permissions> Logger
+@inject IJSRuntime JS
+@inject IPermissionService PermissionService
 
 <PageTitle>Permissions</PageTitle>
 
-<h1>Permissions Management</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Permissions</h1>
+    <button class="btn btn-primary" @onclick="ButtonClicked">
+        <span class="bi bi-plus-circle me-2"></span>
+        Add Permission
+    </button>
+</div>
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Role-Based Access Control</h5>
-                </div>
-                <div class="card-body">
-                    <p>This page will allow you to manage:</p>
-                    <ul>
-                        <li>User Roles</li>
-                        <li>Role Permissions</li>
-                        <li>Access Rights</li>
-                    </ul>
-                    <div class="alert alert-info">
-                        Coming soon: Full RBAC management interface
-                    </div>
+<div class="card">
+    <div class="card-body">
+        @if (permissions == null)
+        {
+            <div class="text-center p-3">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-        </div>
+        }
+        else if (!permissions.Any())
+        {
+            <div class="alert alert-info">
+                No permissions found. Click the "Add Permission" button to create one.
+            </div>
+        }
+        else
+        {
+            <div class="mb-3">
+                <PaginationControl 
+                    PageNumber="@currentPage"
+                    PageSize="@pageSize"
+                    TotalCount="@totalCount"
+                    OnPageChange="@HandlePageChange"
+                    OnPageSizeChange="@HandlePageSizeChange" />
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Resource/Group</th>
+                            <th>Permissions</th>
+                            <th>Description</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var group in groupedPermissions)
+                        {
+                            var isFirst = true;
+                            var groupId = $"group-{group.Key.Replace(" ", "-").ToLowerInvariant()}";
+                            @foreach (var permission in group.OrderBy(p => p.Name))
+                            {
+                                <tr class="group-@groupId" @onmouseover="() => HighlightGroup(groupId)" @onmouseout="() => UnhighlightGroup(groupId)">
+                                    @if (isFirst)
+                                    {
+                                        <td rowspan="@group.Count()" class="align-middle resource-cell">
+                                            <span class="group-name">@GetDisplayGroupKey(group.Key)</span>
+                                        </td>
+                                        isFirst = false;
+                                    }
+                                    <td class="action-cell">@permission.Name.Split(' ')[0]</td>
+                                    <td>@permission.Description</td>
+                                    <td>@permission.CreatedAt.ToFormattedDateTime()</td>
+                                    <td>@permission.UpdatedAt.ToFormattedDateTime()</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-sm btn-outline-primary me-2" 
+                                                    @onclick="() => EditPermission(permission)"
+                                                    title="Edit Permission">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger" 
+                                                    @onclick="() => DeletePermissionWithConfirm(permission)"
+                                                    title="Delete Permission">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3">
+                <PaginationControl 
+                    PageNumber="@currentPage"
+                    PageSize="@pageSize"
+                    TotalCount="@totalCount"
+                    OnPageChange="@HandlePageChange"
+                    OnPageSizeChange="@HandlePageSizeChange" />
+            </div>
+        }
     </div>
-</div> 
+</div>
+
+<Dialog 
+    IsVisible="@isDialogVisible"
+    Title="@dialogTitle"
+    SaveButtonText="@dialogSaveButtonText"
+    OnCloseClick="@(args => CloseDialog())"
+    OnSaveClick="@(args => SavePermission())">
+    <div class="mb-3">
+        <label for="permissionName" class="form-label">Permission Name</label>
+        <input type="text" class="form-control" id="permissionName" @ref="nameInput" @bind="newPermissionName">
+        @if (!string.IsNullOrEmpty(nameError))
+        {
+            <div class="text-danger mt-1">@nameError</div>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="permissionDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="permissionDescription" rows="3" @bind="newPermissionDescription"></textarea>
+    </div>
+</Dialog>
+
+<ConfirmDialog 
+    IsVisible="@isConfirmDialogVisible"
+    Title="Delete Permission"
+    Message="@confirmDialogMessage"
+    ConfirmButtonText="Delete"
+    ConfirmButtonClass="btn-danger"
+    OnConfirm="@ConfirmDelete"
+    OnCancel="@CancelDelete" />
+
+<AlertDialog 
+    IsVisible="@isAlertDialogVisible"
+    Title="@alertDialogTitle"
+    Message="@alertDialogMessage"
+    ButtonText="Close"
+    ButtonClass="@alertDialogButtonClass"
+    ShowSecondaryButton="@showAddMoreButton"
+    SecondaryButtonText="Add more"
+    OnClose="@CloseAlertDialog"
+    OnSecondaryAction="@HandleAddMore" />
+
+@code {
+    private IEnumerable<Permission> permissions;
+    private IEnumerable<IGrouping<string, Permission>> groupedPermissions;
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private int totalCount;
+    private bool isDialogVisible = false;
+    private bool isConfirmDialogVisible = false;
+    private bool isAlertDialogVisible = false;
+    private bool showAddMoreButton = false;
+    private string confirmDialogMessage = "";
+    private string alertDialogTitle = "";
+    private string alertDialogMessage = "";
+    private string alertDialogButtonClass = "btn-primary";
+    private Permission permissionToDelete;
+    private string newPermissionName = "";
+    private string newPermissionDescription = "";
+    private string nameError = "";
+    private string dialogTitle = "Add New Permission";
+    private string dialogSaveButtonText = "Create";
+    private Permission? permissionToEdit;
+    private string currentGroup = "";
+    private ElementReference nameInput;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Logger.LogInformation("Permissions component initialized");
+        await LoadPermissions();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            if (isDialogVisible)
+            {
+                await nameInput.FocusAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error focusing permission name input");
+        }
+    }
+
+    private string GetGroupKey(string permissionName)
+    {
+        var parts = permissionName.Split(new[] { ' ' }, 2);
+        return (parts.Length > 1 ? parts[1] : permissionName).ToLowerInvariant();
+    }
+
+    private string GetDisplayGroupKey(string groupKey)
+    {
+        // Capitalize first letter of each word for display
+        return string.Join(" ", 
+            groupKey.Split(' ')
+                   .Select(word => char.ToUpperInvariant(word[0]) + word.Substring(1)));
+    }
+
+    private async Task LoadPermissions()
+    {
+        try
+        {
+            var paginationParams = new PaginationParams
+            {
+                PageNumber = currentPage,
+                PageSize = pageSize
+            };
+
+            var result = await PermissionService.GetPaginatedPermissionsAsync(paginationParams);
+            permissions = result.Items;
+            totalCount = result.TotalCount;
+            groupedPermissions = permissions
+                .GroupBy(p => GetGroupKey(p.Name))
+                .OrderBy(g => g.Key);
+            
+            Logger.LogInformation("Loaded {Count} permissions in {GroupCount} groups", 
+                permissions.Count(), groupedPermissions.Count());
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error loading permissions");
+            await ShowAlert("Error", "Failed to load permissions. Please try again.", false);
+        }
+    }
+
+    private async Task TryLogToConsole(string message)
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("console.log", message);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Failed to log to console: {Message}", message);
+        }
+    }
+
+    private async Task ButtonClicked()
+    {
+        Logger.LogInformation("Add permission button clicked!");
+        dialogTitle = "Add New Permission";
+        dialogSaveButtonText = "Create";
+        permissionToEdit = null;
+        await OpenDialog();
+    }
+
+    private async Task EditPermission(Permission permission)
+    {
+        try
+        {
+            dialogTitle = "Edit Permission";
+            dialogSaveButtonText = "Update";
+            permissionToEdit = permission;
+            newPermissionName = permission.Name;
+            newPermissionDescription = permission.Description ?? string.Empty;
+            nameError = string.Empty;
+            await OpenDialog();
+            Logger.LogInformation("Editing permission: {Name}", permission.Name);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error preparing permission edit");
+            await JS.InvokeVoidAsync("alert", "Failed to prepare permission edit. Please try again.");
+        }
+    }
+
+    private async Task DeletePermissionWithConfirm(Permission permission)
+    {
+        try
+        {
+            if (permission == null)
+            {
+                throw new ArgumentNullException(nameof(permission), "Permission cannot be null");
+            }
+
+            permissionToDelete = permission;
+            confirmDialogMessage = $"Are you sure you want to delete the permission '<strong>{permission.Name}</strong>'?<br><br>This action cannot be undone.";
+            isConfirmDialogVisible = true;
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error showing delete confirmation");
+            await ShowAlert("Error", "Failed to prepare delete operation. Please try again.", false);
+        }
+    }
+
+    private async Task ConfirmDelete()
+    {
+        try
+        {
+            if (permissionToDelete == null)
+            {
+                throw new InvalidOperationException("No permission selected for deletion");
+            }
+
+            var result = await PermissionService.DeletePermissionAsync(permissionToDelete.Id);
+            if (result)
+            {
+                var deletedName = permissionToDelete.Name;
+                await LoadPermissions();
+                await ShowAlert("Success", $"Permission '<strong>{deletedName}</strong>' has been deleted successfully.");
+                Logger.LogInformation("Permission deleted: {Name}", deletedName);
+            }
+            else
+            {
+                throw new Exception($"Failed to delete permission '{permissionToDelete.Name}'");
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error deleting permission");
+            await ShowAlert("Error", "Failed to delete permission. Please try again.", false);
+        }
+        finally
+        {
+            isConfirmDialogVisible = false;
+            permissionToDelete = null;
+        }
+    }
+
+    private Task CancelDelete()
+    {
+        try
+        {
+            isConfirmDialogVisible = false;
+            permissionToDelete = null;
+            return Task.CompletedTask;
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error canceling delete operation");
+            return Task.CompletedTask;
+        }
+    }
+
+    private async Task OpenDialog()
+    {
+        try
+        {
+            Logger.LogInformation("OpenDialog method called");
+            isDialogVisible = true;
+            nameError = "";
+            Logger.LogInformation("Dialog visibility set to: {IsVisible}", isDialogVisible);
+            await TryLogToConsole($"Dialog opened, visibility: {isDialogVisible}");
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error in OpenDialog method");
+        }
+    }
+
+    private async Task CloseDialog()
+    {
+        try
+        {
+            Logger.LogInformation("Closing permission dialog");
+            isDialogVisible = false;
+            await ResetForm();
+            Logger.LogInformation("Dialog closed and form reset");
+            await TryLogToConsole("Dialog closed");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error in CloseDialog method");
+        }
+    }
+
+    private async Task ShowAlert(string title, string message, bool isSuccess = true, bool showAddMore = false)
+    {
+        alertDialogTitle = title;
+        alertDialogMessage = message;
+        alertDialogButtonClass = isSuccess ? "btn-success" : "btn-danger";
+        showAddMoreButton = showAddMore;
+        isAlertDialogVisible = true;
+        StateHasChanged();
+    }
+
+    private async Task HandleAddMore()
+    {
+        isAlertDialogVisible = false;
+        await ResetForm();
+        isDialogVisible = true;
+    }
+
+    private async Task SavePermission()
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(newPermissionName))
+            {
+                nameError = "Permission name is required";
+                return;
+            }
+
+            var permission = permissionToEdit ?? new Permission();
+            permission.Name = newPermissionName;
+            permission.Description = newPermissionDescription;
+
+            if (permissionToEdit == null)
+            {
+                await PermissionService.CreatePermissionAsync(permission);
+                Logger.LogInformation("New permission created: {Name}", permission.Name);
+                await LoadPermissions();
+                await CloseDialog();
+                await ShowAlert("Success", $"Permission '<strong>{permission.Name}</strong>' has been created successfully.", true, true);
+            }
+            else
+            {
+                var result = await PermissionService.UpdatePermissionAsync(permission);
+                if (result == null)
+                {
+                    throw new Exception("Failed to update permission");
+                }
+                Logger.LogInformation("Permission updated: {Name}", permission.Name);
+                await LoadPermissions();
+                await CloseDialog();
+                await ShowAlert("Success", $"Permission '<strong>{permission.Name}</strong>' has been updated successfully.");
+            }
+        }
+        catch (InvalidOperationException ex)
+        {
+            nameError = ex.Message;
+            Logger.LogWarning(ex, "Validation error in SavePermission");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error in SavePermission method");
+            await ShowAlert("Error", "Failed to save permission. Please try again.", false);
+        }
+    }
+
+    private async Task ResetForm()
+    {
+        try
+        {
+            newPermissionName = "";
+            newPermissionDescription = "";
+            nameError = "";
+            permissionToEdit = null;
+            dialogTitle = "Add New Permission";
+            dialogSaveButtonText = "Create";
+            Logger.LogInformation("Form fields have been reset");
+            await TryLogToConsole("Form fields have been reset");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error in ResetForm method");
+        }
+    }
+
+    private Task CloseAlertDialog()
+    {
+        isAlertDialogVisible = false;
+        return Task.CompletedTask;
+    }
+
+    private async Task HighlightGroup(string groupId)
+    {
+        await JS.InvokeVoidAsync("eval", $"document.querySelectorAll('.group-{groupId}').forEach(row => row.classList.add('highlight-group'))");
+    }
+
+    private async Task UnhighlightGroup(string groupId)
+    {
+        await JS.InvokeVoidAsync("eval", $"document.querySelectorAll('.group-{groupId}').forEach(row => row.classList.remove('highlight-group'))");
+    }
+
+    private async Task HandlePageChange(int newPage)
+    {
+        if (currentPage != newPage)
+        {
+            currentPage = newPage;
+            await LoadPermissions();
+        }
+    }
+
+    private async Task HandlePageSizeChange(int newPageSize)
+    {
+        if (pageSize != newPageSize)
+        {
+            pageSize = newPageSize;
+            currentPage = 1; // Reset to first page when changing page size
+            await LoadPermissions();
+        }
+    }
+} 

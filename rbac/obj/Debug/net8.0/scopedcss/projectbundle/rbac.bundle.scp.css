@@ -205,3 +205,21 @@ main[b-1crrohna68] {
         overflow-y: auto;
     }
 }
+/* _content/rbac/Components/Utils/Dialog.razor.rz.scp.css */
+.modal-backdrop[b-wyak1h20ye] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+
+.modal[b-wyak1h20ye] {
+    z-index: 1050;
+}
+
+.modal.show[b-wyak1h20ye] {
+    display: block;
+} 

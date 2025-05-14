@@ -1,0 +1,54 @@
+tbody {
+    counter-reset: group-counter;
+}
+
+.permission-group {
+    counter-increment: group-counter;
+}
+
+.permission-group[data-group-id] {
+    --group-id: attr(data-group-id);
+}
+
+.permission-group:hover,
+.permission-group:hover ~ .permission-group[data-group-id=var(--current-group)] {
+    background-color: rgba(0, 123, 255, 0.1) !important;
+}
+
+.permission-group:hover td,
+.permission-group:hover ~ .permission-group[data-group-id=var(--current-group)] td {
+    background-color: rgba(0, 123, 255, 0.1) !important;
+}
+
+.group-name {
+    font-weight: 500;
+}
+
+.highlight-group {
+    background-color: rgba(0, 123, 255, 0.1) !important;
+}
+
+/* Set base background for all cells */
+.table-striped > tbody > tr td {
+    background-color: transparent;
+}
+
+/* Striped effect for even rows */
+.table-striped > tbody > tr:nth-of-type(even) td:not(.resource-cell) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Group highlight effect */
+tr[class*="group-"]:hover td:not(.resource-cell) {
+    background-color: rgba(0, 0, 0, 0.075) !important;
+}
+
+/* Resource cell always stays transparent */
+.resource-cell {
+    background-color: transparent !important;
+}
+
+/* When row is both hovered and part of highlighted group */
+tr[class*="group-"].highlight-group:hover td:not(.resource-cell) {
+    background-color: rgba(0, 123, 255, 0.15) !important;
+} 

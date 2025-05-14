@@ -1,28 +1,28 @@
 {
   "Version": 1,
-  "Hash": "gc6rTy0stE3G2pe/tJML2x9TCX95BV8E/JRFtu/uEKI=",
-  "Source": "rbac",
-  "BasePath": "_content/rbac",
+  "Hash": "OkxIJxJiBojX1CfFebZdIpbYt7VmZJLp/d6zj7j/Oy8=",
+  "Source": "AccessHub",
+  "BasePath": "_content/AccessHub",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "rbac\\wwwroot",
-      "Source": "rbac",
+      "Name": "AccessHub\\wwwroot",
+      "Source": "AccessHub",
       "ContentRoot": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\",
-      "BasePath": "_content/rbac",
+      "BasePath": "_content/AccessHub",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\rbac.styles.css",
-      "SourceId": "rbac",
+      "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AccessHub.styles.css",
+      "SourceId": "AccessHub",
       "SourceType": "Computed",
       "ContentRoot": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/rbac",
-      "RelativePath": "rbac#[.{fingerprint}]?.styles.css",
+      "BasePath": "_content/AccessHub",
+      "RelativePath": "AccessHub#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Primary",
@@ -31,19 +31,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "hmqbfg90cb",
-      "Integrity": "iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=",
+      "Fingerprint": "39wac658vw",
+      "Integrity": "x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\rbac.styles.css"
+      "OriginalItemSpec": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AccessHub.styles.css"
     },
     {
-      "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\rbac.bundle.scp.css",
-      "SourceId": "rbac",
+      "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AccessHub.bundle.scp.css",
+      "SourceId": "AccessHub",
       "SourceType": "Computed",
       "ContentRoot": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/rbac",
-      "RelativePath": "rbac#[.{fingerprint}]!.bundle.scp.css",
+      "BasePath": "_content/AccessHub",
+      "RelativePath": "AccessHub#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Primary",
@@ -52,18 +52,18 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "hmqbfg90cb",
-      "Integrity": "iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=",
+      "Fingerprint": "39wac658vw",
+      "Integrity": "x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\rbac.bundle.scp.css"
+      "OriginalItemSpec": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AccessHub.bundle.scp.css"
     },
     {
       "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\app.css",
-      "SourceId": "rbac",
+      "SourceId": "AccessHub",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\",
-      "BasePath": "_content/rbac",
+      "BasePath": "_content/AccessHub",
       "RelativePath": "app#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -81,10 +81,10 @@
     },
     {
       "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\bootstrap\\bootstrap.min.css",
-      "SourceId": "rbac",
+      "SourceId": "AccessHub",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\",
-      "BasePath": "_content/rbac",
+      "BasePath": "_content/AccessHub",
       "RelativePath": "bootstrap/bootstrap.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -102,10 +102,10 @@
     },
     {
       "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\bootstrap\\bootstrap.min.css.map",
-      "SourceId": "rbac",
+      "SourceId": "AccessHub",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\",
-      "BasePath": "_content/rbac",
+      "BasePath": "_content/AccessHub",
       "RelativePath": "bootstrap/bootstrap.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -123,10 +123,10 @@
     },
     {
       "Identity": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\favicon.png",
-      "SourceId": "rbac",
+      "SourceId": "AccessHub",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\",
-      "BasePath": "_content/rbac",
+      "BasePath": "_content/AccessHub",
       "RelativePath": "favicon#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -144,6 +144,170 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "AccessHub.39wac658vw.bundle.scp.css",
+      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AccessHub.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 23:54:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39wac658vw"
+        },
+        {
+          "Name": "label",
+          "Value": "AccessHub.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk="
+        }
+      ]
+    },
+    {
+      "Route": "AccessHub.39wac658vw.styles.css",
+      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AccessHub.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 23:54:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39wac658vw"
+        },
+        {
+          "Name": "label",
+          "Value": "AccessHub.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk="
+        }
+      ]
+    },
+    {
+      "Route": "AccessHub.bundle.scp.css",
+      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AccessHub.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 23:54:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk="
+        }
+      ]
+    },
+    {
+      "Route": "AccessHub.styles.css",
+      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AccessHub.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 23:54:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-x3VH/+/u13B7Z96MYxOgau3jfVvYBrlfsU7RB4VRsrk="
+        }
+      ]
+    },
     {
       "Route": "app.css",
       "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\wwwroot\\app.css",
@@ -469,170 +633,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="
-        }
-      ]
-    },
-    {
-      "Route": "rbac.bundle.scp.css",
-      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\rbac.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6674"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:19:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
-        }
-      ]
-    },
-    {
-      "Route": "rbac.hmqbfg90cb.bundle.scp.css",
-      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\rbac.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6674"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:19:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "hmqbfg90cb"
-        },
-        {
-          "Name": "label",
-          "Value": "rbac.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
-        }
-      ]
-    },
-    {
-      "Route": "rbac.hmqbfg90cb.styles.css",
-      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\rbac.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6674"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:19:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "hmqbfg90cb"
-        },
-        {
-          "Name": "label",
-          "Value": "rbac.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
-        }
-      ]
-    },
-    {
-      "Route": "rbac.styles.css",
-      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\rbac.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6674"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:19:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
         }
       ]
     }
