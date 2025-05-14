@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vUIfPWFSOKVD26NZRJ9582eNHDQHTfTfZZz5OKMIrz4=",
+  "Hash": "gc6rTy0stE3G2pe/tJML2x9TCX95BV8E/JRFtu/uEKI=",
   "Source": "rbac",
   "BasePath": "_content/rbac",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "to6yvrfhh0",
-      "Integrity": "o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk=",
+      "Fingerprint": "hmqbfg90cb",
+      "Integrity": "iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\rbac.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "to6yvrfhh0",
-      "Integrity": "o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk=",
+      "Fingerprint": "hmqbfg90cb",
+      "Integrity": "iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\rbac.bundle.scp.css"
@@ -483,7 +483,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5891"
+          "Value": "6674"
         },
         {
           "Name": "Content-Type",
@@ -491,11 +491,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk=\""
+          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:13:10 GMT"
+          "Value": "Wed, 14 May 2025 13:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -505,7 +505,97 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk="
+          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
+        }
+      ]
+    },
+    {
+      "Route": "rbac.hmqbfg90cb.bundle.scp.css",
+      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\rbac.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6674"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 13:19:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hmqbfg90cb"
+        },
+        {
+          "Name": "label",
+          "Value": "rbac.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
+        }
+      ]
+    },
+    {
+      "Route": "rbac.hmqbfg90cb.styles.css",
+      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\rbac.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6674"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 13:19:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hmqbfg90cb"
+        },
+        {
+          "Name": "label",
+          "Value": "rbac.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
         }
       ]
     },
@@ -520,7 +610,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5891"
+          "Value": "6674"
         },
         {
           "Name": "Content-Type",
@@ -528,11 +618,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk=\""
+          "Value": "\"iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:13:10 GMT"
+          "Value": "Wed, 14 May 2025 13:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -542,97 +632,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk="
-        }
-      ]
-    },
-    {
-      "Route": "rbac.to6yvrfhh0.bundle.scp.css",
-      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\rbac.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5891"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:13:10 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "to6yvrfhh0"
-        },
-        {
-          "Name": "label",
-          "Value": "rbac.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk="
-        }
-      ]
-    },
-    {
-      "Route": "rbac.to6yvrfhh0.styles.css",
-      "AssetFile": "F:\\work\\test\\cursor-net\\rbac\\rbac\\obj\\Debug\\net8.0\\scopedcss\\bundle\\rbac.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5891"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 13:13:10 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "to6yvrfhh0"
-        },
-        {
-          "Name": "label",
-          "Value": "rbac.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-o67IvgJVBwH1RyH7HzpzlZKOFGMspuLLte9tERCHETk="
+          "Value": "sha256-iZrSyO0clFlcFXMt7veE6G0WUWL1Srfqw4LgG5OGLEg="
         }
       ]
     }
