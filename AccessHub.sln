@@ -1,9 +1,8 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbac", "rbac\rbac.csproj", "{8FD0C33C-C5F0-4C20-8531-11185516AFFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessHub", "AccessHub\AccessHub.csproj", "{8FD0C33C-C5F0-4C20-8531-11185516AFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
